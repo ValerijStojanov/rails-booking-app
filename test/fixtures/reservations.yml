@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  room: one
+  parking_area: one
   name: MyString
   start_date: 2026-10-05 20:03:59
   end_date: 2026-10-05 20:03:59
 
 two:
-  room: two
+  parking_area: two
   name: MyString
   start_date: 2026-10-05 20:03:59
   end_date: 2026-10-05 20:03:59
