@@ -738,8 +738,20 @@ body:has(.parking-areas-index-page) {
   gap: 1rem;
 }
 
-.reservation-detail-card .parking-area-form-heading {
+.reservation-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.reservation-detail-header .parking-area-form-heading {
+  margin-bottom: 0;
+}
+
+.reservation-detail-header .parking-areas-new-link {
+  flex: 0 0 auto;
 }
 
 .reservation-details {
@@ -957,6 +969,15 @@ body:has(.parking-areas-index-page) {
   .reservation-detail-row {
     grid-template-columns: 1fr;
     gap: 0.35rem;
+  }
+
+  .reservation-detail-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .reservation-detail-header .parking-areas-new-link {
+    align-self: flex-start;
   }
 }
 

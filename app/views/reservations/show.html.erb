@@ -14,9 +14,13 @@
   </header>
 
   <section class="parking-area-form-card reservation-detail-card" aria-labelledby="reservation-title">
-    <div class="parking-area-form-heading">
-      <p class="parking-areas-eyebrow"><%= t(".eyebrow") %></p>
-      <h1 id="reservation-title"><%= t(".title", id: @reservation.id) %></h1>
+    <div class="reservation-detail-header">
+      <div class="parking-area-form-heading">
+        <p class="parking-areas-eyebrow"><%= t(".eyebrow") %></p>
+        <h1 id="reservation-title"><%= t(".title", id: @reservation.id) %></h1>
+      </div>
+
+      <%= link_to t(".edit_reservation"), edit_reservation_path(@reservation), class: "parking-areas-new-link" %>
     </div>
 
     <dl class="reservation-details">
