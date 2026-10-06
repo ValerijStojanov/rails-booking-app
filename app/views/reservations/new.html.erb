@@ -6,10 +6,12 @@
 
 <main class="reservation-new-page">
   <header class="reservation-new-header">
-    <%= link_to parking_areas_path, class: "parking-back-link" do %>
-      <span aria-hidden="true">&larr;</span>
-      <span>Parking areas</span>
-    <% end %>
+    <nav class="parking-breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><%= link_to "All reservations", reservations_path %></li>
+        <li aria-current="page">New reservation</li>
+      </ol>
+    </nav>
 
     <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
       <span class="parking-brand-mark" aria-hidden="true">P</span>
