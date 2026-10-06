@@ -33,7 +33,10 @@
           <h1 id="parking-areas-title">Parking areas</h1>
         </div>
 
-        <%= link_to "New parking area", new_parking_area_path, class: "parking-areas-new-link" %>
+        <div class="parking-areas-heading-actions">
+          <%= link_to "All reservations", reservations_path, class: "parking-areas-new-link" %>
+          <%= link_to "New parking area", new_parking_area_path, class: "parking-areas-new-link" %>
+        </div>
       </div>
 
       <ul class="parking-areas-list">

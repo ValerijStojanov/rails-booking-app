@@ -262,7 +262,13 @@ body:has(.parking-areas-index-page) {
   flex-direction: column;
 }
 
-.parking-areas-browser .parking-areas-heading .parking-areas-new-link {
+.parking-areas-heading-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.parking-areas-heading-actions .parking-areas-new-link {
   text-align: center;
 }
 
@@ -908,6 +914,10 @@ body:has(.parking-areas-index-page) {
 }
 
 @media (max-width: 28rem) {
+  .parking-areas-heading-actions {
+    grid-template-columns: 1fr;
+  }
+
   .parking-areas-new-link {
     padding-inline: 0.9rem;
     font-size: 0.8rem;

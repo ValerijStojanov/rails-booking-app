@@ -1,8 +1,8 @@
 <main class="parking-area-show-page reservation-show-page">
   <header class="parking-area-show-header">
-    <%= link_to reservations_path, class: "parking-back-link" do %>
+    <%= link_to @reservation.parking_area, class: "parking-back-link" do %>
       <span aria-hidden="true">&larr;</span>
-      <span>All reservations</span>
+      <span><%= @reservation.parking_area.name %></span>
     <% end %>
 
     <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
