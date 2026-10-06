@@ -4,19 +4,26 @@
       <span class="parking-brand-mark" aria-hidden="true">P</span>
       <span>Parking</span>
     </a>
-
-    <%= link_to "New parking area", new_parking_area_path, class: "parking-areas-new-link" %>
-
-    <%= link_to "New reservation", new_reservation_path, class: "parking-areas-new-link" %>
   </header>
 
   <div class="parking-areas-browser">
-    <section class="parking-map-placeholder" aria-label="Map placeholder">
-      <div class="parking-map-pin" aria-hidden="true"></div>
-      <div class="parking-map-label">
-        <strong>Map preview</strong>
-        <span>Replace this placeholder with a map later</span>
+    <section class="parking-map-placeholder" aria-label="Decorative parking area map">
+      <%= image_tag "map.svg",
+              alt: "",
+              class: "parking-map-image",
+              aria: { hidden: true } %>
+
+      <div class="parking-map-locations">
+        <% @parking_areas.each do |parking_area| %>
+          <%= link_to parking_area,
+                  class: "parking-map-location",
+                  aria: { label: "View #{parking_area.name}" } do %>
+            <span class="parking-map-location-pin" aria-hidden="true"></span>
+            <span class="parking-map-location-name"><%= parking_area.name %></span>
+          <% end %>
+        <% end %>
       </div>
+
     </section>
 
     <section class="parking-areas-section" aria-labelledby="parking-areas-title">
@@ -25,6 +32,8 @@
           <p class="parking-areas-eyebrow">Choose a location</p>
           <h1 id="parking-areas-title">Parking areas</h1>
         </div>
+
+        <%= link_to "New parking area", new_parking_area_path, class: "parking-areas-new-link" %>
       </div>
 
       <ul class="parking-areas-list">
@@ -34,7 +43,6 @@
               <span class="parking-area-icon" aria-hidden="true">P</span>
               <span class="parking-area-details">
                 <strong><%= parking_area.name %></strong>
-                <span>Capacity: <%= parking_area.capacity %></span>
               </span>
               <span class="parking-area-arrow" aria-hidden="true">&rarr;</span>
             <% end %>
