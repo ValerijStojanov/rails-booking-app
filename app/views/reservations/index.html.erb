@@ -1,18 +1,18 @@
 <main class="parking-areas-page reservations-page">
   <header class="parking-areas-header">
-    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="<%= t("application.home_label") %>">
       <span class="parking-brand-mark" aria-hidden="true">P</span>
-      <span>Parking</span>
+      <span><%= t("application.name") %></span>
     </a>
 
-    <%= link_to "New reservation", new_reservation_path, class: "parking-areas-new-link" %>
+    <%= link_to t("navigation.new_reservation"), new_reservation_path, class: "parking-areas-new-link" %>
   </header>
 
   <section class="parking-areas-section" aria-labelledby="reservations-title">
     <div class="parking-areas-heading">
       <div>
-        <p class="parking-areas-eyebrow">Reservation overview</p>
-        <h1 id="reservations-title">All reservations</h1>
+        <p class="parking-areas-eyebrow"><%= t(".eyebrow") %></p>
+        <h1 id="reservations-title"><%= t(".title") %></h1>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
             <span class="parking-area-icon" aria-hidden="true">R</span>
             <span class="parking-area-details">
               <strong><%= reservation.name %></strong>
-              <span>Starts <%= l reservation.start_date, format: :short %></span>
+              <span><%= t(".starts_at", time: l(reservation.start_date, format: :short)) %></span>
             </span>
             <span class="parking-area-arrow" aria-hidden="true">&rarr;</span>
           <% end %>

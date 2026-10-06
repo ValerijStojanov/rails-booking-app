@@ -1,13 +1,13 @@
 <main class="parking-areas-page parking-areas-index-page">
   <header class="parking-areas-header">
-    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="<%= t("application.home_label") %>">
       <span class="parking-brand-mark" aria-hidden="true">P</span>
-      <span>Parking</span>
+      <span><%= t("application.name") %></span>
     </a>
   </header>
 
   <div class="parking-areas-browser">
-    <section class="parking-map-placeholder" aria-label="Decorative parking area map">
+    <section class="parking-map-placeholder" aria-label="<%= t("application.decorative_map_label") %>">
       <%= image_tag "map.svg",
               alt: "",
               class: "parking-map-image",
@@ -17,7 +17,7 @@
         <% @parking_areas.each do |parking_area| %>
           <%= link_to parking_area,
                   class: "parking-map-location",
-                  aria: { label: "View #{parking_area.name}" } do %>
+                  aria: { label: t("application.view_parking_area_label", name: parking_area.name) } do %>
             <span class="parking-map-location-pin" aria-hidden="true"></span>
             <span class="parking-map-location-name"><%= parking_area.name %></span>
           <% end %>
@@ -29,13 +29,13 @@
     <section class="parking-areas-section" aria-labelledby="parking-areas-title">
       <div class="parking-areas-heading">
         <div>
-          <p class="parking-areas-eyebrow">Choose a location</p>
-          <h1 id="parking-areas-title">Parking areas</h1>
+          <p class="parking-areas-eyebrow"><%= t(".eyebrow") %></p>
+          <h1 id="parking-areas-title"><%= t(".title") %></h1>
         </div>
 
         <div class="parking-areas-heading-actions">
-          <%= link_to "All reservations", reservations_path, class: "parking-areas-new-link" %>
-          <%= link_to "New parking area", new_parking_area_path, class: "parking-areas-new-link" %>
+          <%= link_to t("navigation.all_reservations"), reservations_path, class: "parking-areas-new-link" %>
+          <%= link_to t("navigation.new_parking_area"), new_parking_area_path, class: "parking-areas-new-link" %>
         </div>
       </div>
 
