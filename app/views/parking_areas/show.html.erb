@@ -1,9 +1,11 @@
 <main class="parking-area-show-page">
   <header class="parking-area-show-header">
-    <%= link_to parking_areas_path, class: "parking-back-link" do %>
-      <span aria-hidden="true">&larr;</span>
-      <span>Parking areas</span>
-    <% end %>
+    <nav class="parking-breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><%= link_to "Parking areas", parking_areas_path %></li>
+        <li aria-current="page"><%= @parking_area.name %></li>
+      </ol>
+    </nav>
 
     <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
       <span class="parking-brand-mark" aria-hidden="true">P</span>

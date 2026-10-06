@@ -410,6 +410,47 @@ body:has(.parking-areas-index-page) {
   color: #8f3d56;
 }
 
+.parking-breadcrumbs {
+  min-width: 0;
+  color: #6d776f;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.parking-breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.parking-breadcrumbs li {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.parking-breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 0.4rem;
+  color: #a5aea8;
+}
+
+.parking-breadcrumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.parking-breadcrumbs a:hover {
+  color: #8f3d56;
+}
+
+.parking-breadcrumbs [aria-current="page"] {
+  color: #17201b;
+}
+
 .parking-area-summary,
 .parking-schedule {
   border: 1px solid #e2e7e4;
@@ -747,6 +788,12 @@ body:has(.parking-areas-index-page) {
 }
 
 .reservation-detail-row a:focus-visible {
+  outline: 3px solid #c9859b;
+  outline-offset: 3px;
+}
+
+.parking-breadcrumbs a:focus-visible {
+  border-radius: 0.2rem;
   outline: 3px solid #c9859b;
   outline-offset: 3px;
 }
