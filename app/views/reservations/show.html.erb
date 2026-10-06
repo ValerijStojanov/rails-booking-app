@@ -1,42 +1,42 @@
 <main class="parking-area-show-page reservation-show-page">
   <header class="parking-area-show-header">
-    <nav class="parking-breadcrumbs" aria-label="Breadcrumb">
+    <nav class="parking-breadcrumbs" aria-label="<%= t("application.breadcrumb_label") %>">
       <ol>
-        <li><%= link_to "All reservations", reservations_path %></li>
-        <li aria-current="page">Reservation #<%= @reservation.id %></li>
+        <li><%= link_to t("navigation.all_reservations"), reservations_path %></li>
+        <li aria-current="page"><%= t("reservations.breadcrumbs.reservation", id: @reservation.id) %></li>
       </ol>
     </nav>
 
-    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="<%= t("application.home_label") %>">
       <span class="parking-brand-mark" aria-hidden="true">P</span>
-      <span>Parking</span>
+      <span><%= t("application.name") %></span>
     </a>
   </header>
 
   <section class="parking-area-form-card reservation-detail-card" aria-labelledby="reservation-title">
     <div class="parking-area-form-heading">
-      <p class="parking-areas-eyebrow">Reservation details</p>
-      <h1 id="reservation-title">Rezervace č. <%= @reservation.id %></h1>
+      <p class="parking-areas-eyebrow"><%= t(".eyebrow") %></p>
+      <h1 id="reservation-title"><%= t(".title", id: @reservation.id) %></h1>
     </div>
 
     <dl class="reservation-details">
       <div class="reservation-detail-row">
-        <dt>Fullname</dt>
+        <dt><%= t(".fullname") %></dt>
         <dd><%= @reservation.name %></dd>
       </div>
 
       <div class="reservation-detail-row">
-        <dt>From</dt>
+        <dt><%= t(".starts_at") %></dt>
         <dd><%= l @reservation.start_date, format: :short %></dd>
       </div>
 
       <div class="reservation-detail-row">
-        <dt>To</dt>
+        <dt><%= t(".ends_at") %></dt>
         <dd><%= l @reservation.end_date, format: :short %></dd>
       </div>
 
       <div class="reservation-detail-row">
-        <dt>Parking area</dt>
+        <dt><%= t(".parking_area") %></dt>
         <dd><%= link_to @reservation.parking_area.name, @reservation.parking_area %></dd>
       </div>
     </dl>

@@ -7,7 +7,7 @@ class Reservation < ApplicationRecord
   validates :end_date,
           comparison: {
             greater_than: :start_date,
-            message: "must be after start date"
+            message: :after_start_date
           }
 
   validate :capacity_check
@@ -39,7 +39,7 @@ class Reservation < ApplicationRecord
       sum += change
 
       if sum > parking_area.capacity
-        errors.add(:base, "Parking area capacity exceeded")
+        errors.add(:base, :capacity_exceeded)
         return
       end
     end

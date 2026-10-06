@@ -1,29 +1,29 @@
 <main class="parking-area-show-page">
   <header class="parking-area-show-header">
-    <nav class="parking-breadcrumbs" aria-label="Breadcrumb">
+    <nav class="parking-breadcrumbs" aria-label="<%= t("application.breadcrumb_label") %>">
       <ol>
-        <li><%= link_to "Parking areas", parking_areas_path %></li>
+        <li><%= link_to t("navigation.parking_areas"), parking_areas_path %></li>
         <li aria-current="page"><%= @parking_area.name %></li>
       </ol>
     </nav>
 
-    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="<%= t("application.home_label") %>">
       <span class="parking-brand-mark" aria-hidden="true">P</span>
-      <span>Parking</span>
+      <span><%= t("application.name") %></span>
     </a>
   </header>
 
   <section class="parking-area-summary" aria-labelledby="parking-area-name">
     <div class="parking-area-summary-copy">
-      <p class="parking-areas-eyebrow">Parking area</p>
+      <p class="parking-areas-eyebrow"><%= t(".eyebrow") %></p>
       <h1 id="parking-area-name"><%= @parking_area.name %></h1>
       <p class="parking-capacity-explanation">
-        Up to <strong><%= @parking_area.capacity %></strong> reservations can overlap at the same time.
+        <%= t(".capacity_explanation_html", count: @parking_area.capacity) %>
       </p>
     </div>
 
     <div class="parking-area-summary-actions">
-      <%= link_to "New reservation",
+      <%= link_to t("navigation.new_reservation"),
               new_reservation_path(parking_area_id: @parking_area.id),
               class: "parking-areas-new-link" %>
     </div>
@@ -31,8 +31,8 @@
 
   <section class="parking-schedule" aria-labelledby="schedule-title">
     <div class="parking-schedule-heading">
-      <p class="parking-areas-eyebrow">Chronological overview</p>
-      <h2 id="schedule-title">Schedule</h2>
+      <p class="parking-areas-eyebrow"><%= t(".schedule_eyebrow") %></p>
+      <h2 id="schedule-title"><%= t(".schedule_title") %></h2>
     </div>
 
     <% if @reservations.any? %>
@@ -57,7 +57,7 @@
                           <%= l reservation.start_date, format: "%H:%M" %>
                           <span aria-hidden="true">&rarr;</span>
                         </strong>
-                        <small>Ends <%= l reservation.end_date, format: :short %></small>
+                        <small><%= t(".ends_at", time: l(reservation.end_date, format: :short)) %></small>
                       <% end %>
                     </span>
 
@@ -72,9 +72,9 @@
       </div>
     <% else %>
       <div class="parking-schedule-empty">
-        <h3>No reservations scheduled</h3>
-        <p>This parking area does not have any reservations yet.</p>
-        <%= link_to "New reservation",
+        <h3><%= t(".empty_title") %></h3>
+        <p><%= t(".empty_description") %></p>
+        <%= link_to t("navigation.new_reservation"),
                 new_reservation_path(parking_area_id: @parking_area.id),
                 class: "parking-areas-new-link" %>
       </div>

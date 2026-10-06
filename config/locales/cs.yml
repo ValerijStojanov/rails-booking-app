@@ -1,0 +1,162 @@
+cs:
+  application:
+    title: "Rezervační systém parkování"
+    name: "Parkování"
+    home_label: "Domovská stránka parkování"
+    breadcrumb_label: "Drobečková navigace"
+    decorative_map_label: "Dekorativní mapa parkovišť"
+    view_parking_area_label: "Zobrazit parkoviště %{name}"
+
+  navigation:
+    parking_areas: "Parkoviště"
+    all_reservations: "Všechny rezervace"
+    new_parking_area: "Nové parkoviště"
+    new_reservation: "Nová rezervace"
+
+  parking_areas:
+    index:
+      eyebrow: "Vyberte parkoviště"
+      title: "Parkoviště"
+    new:
+      eyebrow: "Parkoviště"
+      title: "Vytvořit nové parkoviště"
+      description: "Zadejte název a celkovou kapacitu parkoviště."
+    show:
+      eyebrow: "Parkoviště"
+      capacity_explanation_html: "Současně může probíhat až <strong>%{count}</strong> rezervací."
+      schedule_eyebrow: "Chronologický přehled"
+      schedule_title: "Harmonogram"
+      ends_at: "Končí %{time}"
+      empty_title: "Žádné naplánované rezervace"
+      empty_description: "Toto parkoviště zatím nemá žádné rezervace."
+
+  reservations:
+    index:
+      eyebrow: "Přehled rezervací"
+      title: "Všechny rezervace"
+      starts_at: "Začátek: %{time}"
+    new:
+      eyebrow: "Rezervace"
+      title: "Vytvořit rezervaci"
+      description: "Zadejte údaje rezervace a vyberte parkoviště."
+    edit:
+      eyebrow: "Rezervace"
+      title: "Upravit rezervaci"
+      description: "Upravte údaje rezervace nebo přiřazené parkoviště."
+    show:
+      eyebrow: "Detail rezervace"
+      title: "Rezervace č. %{id}"
+      fullname: "Celé jméno"
+      starts_at: "Od"
+      ends_at: "Do"
+      parking_area: "Parkoviště"
+    form:
+      choose_parking_area: "Vyberte parkoviště"
+    breadcrumbs:
+      reservation: "Rezervace č. %{id}"
+      edit: "Upravit"
+
+  notices:
+    parking_area_created: "Parkoviště bylo úspěšně vytvořeno."
+    reservation_created: "Rezervace byla úspěšně vytvořena."
+    reservation_updated: "Rezervace byla úspěšně upravena."
+
+  activerecord:
+    models:
+      parking_area: "Parkoviště"
+      reservation: "Rezervace"
+    attributes:
+      parking_area:
+        name: "Název"
+        capacity: "Kapacita"
+      reservation:
+        name: "Celé jméno"
+        start_date: "Začátek rezervace"
+        end_date: "Konec rezervace"
+        parking_area: "Parkoviště"
+        parking_area_id: "Parkoviště"
+    errors:
+      models:
+        reservation:
+          attributes:
+            end_date:
+              after_start_date: "musí být po začátku rezervace"
+            base:
+              capacity_exceeded: "Kapacita parkoviště byla překročena"
+
+  helpers:
+    submit:
+      parking_area:
+        create: "Vytvořit parkoviště"
+      reservation:
+        create: "Vytvořit rezervaci"
+        update: "Uložit změny"
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "je nutné vyplnit"
+      required: "musí být vybráno"
+      not_a_number: "musí být číslo"
+      not_an_integer: "musí být celé číslo"
+      greater_than: "musí být větší než %{count}"
+
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d.%m.%Y"
+      long: "%-d. %B %Y"
+    day_names:
+      - "neděle"
+      - "pondělí"
+      - "úterý"
+      - "středa"
+      - "čtvrtek"
+      - "pátek"
+      - "sobota"
+    abbr_day_names:
+      - "ne"
+      - "po"
+      - "út"
+      - "st"
+      - "čt"
+      - "pá"
+      - "so"
+    month_names:
+      -
+      - "ledna"
+      - "února"
+      - "března"
+      - "dubna"
+      - "května"
+      - "června"
+      - "července"
+      - "srpna"
+      - "září"
+      - "října"
+      - "listopadu"
+      - "prosince"
+    abbr_month_names:
+      -
+      - "led"
+      - "úno"
+      - "bře"
+      - "dub"
+      - "kvě"
+      - "čvn"
+      - "čvc"
+      - "srp"
+      - "zář"
+      - "říj"
+      - "lis"
+      - "pro"
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      short: "%d.%m.%Y %H:%M"
+      long: "%-d. %B %Y %H:%M"

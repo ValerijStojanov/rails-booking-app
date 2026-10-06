@@ -17,7 +17,7 @@ class ParkingAreasController < ApplicationController
     @parking_area = ParkingArea.new(parking_area_params)
 
     if @parking_area.save
-      redirect_to @parking_area, notice: "Parking area was successfully created."
+      redirect_to @parking_area, notice: I18n.t("notices.parking_area_created")
     else
       render :new, status: :unprocessable_entity
     end

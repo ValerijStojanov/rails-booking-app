@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
-      redirect_to @reservation, notice: "Reservation was successfully created."
+      redirect_to @reservation, notice: I18n.t("notices.reservation_created")
     else
       @parking_areas = ParkingArea.all
       render :new, status: :unprocessable_entity
@@ -31,7 +31,7 @@ class ReservationsController < ApplicationController
 
   def update
     if @reservation.update(reservation_params)
-      redirect_to @reservation, notice: "Reservation was successfully updated."
+      redirect_to @reservation, notice: I18n.t("notices.reservation_updated")
     else
       @parking_areas = ParkingArea.all
       render :edit, status: :unprocessable_entity
