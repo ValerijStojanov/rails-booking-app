@@ -12,7 +12,7 @@ Téma jsem si vybral na základě situace, kterou jsem v minulosti řešil se zn
 
 ### Návrh modelů
 
-Základní návrh modelů do velké míry vychází z technického zadání. Zvolil jsem dva hlavní modely – `ParkingArea` a `Reservation`. `ParkingArea` reprezentuje parkovací plochu s určitou kapacitou a `Reservation` konkrétní rezervaci v časovém intervalu.
+Základní návrh modelů do velké míry vychází z technického zadání. Zvolil jsem dva hlavní modely, `ParkingArea` a `Reservation`. `ParkingArea` reprezentuje parkovací plochu s určitou kapacitou a `Reservation` konkrétní rezervaci v časovém intervalu.
 
 Pro prototyp mi tato struktura přišla dostatečně jednoduchá a zároveň rozšiřitelná. Nezaváděl jsem samostatný model pro jednotlivá parkovací místa, protože pro splnění zadání stačí pracovat s celkovou kapacitou parkovací plochy. Pokud by aplikace v budoucnu potřebovala rezervovat konkrétní místo, bylo by možné model dále rozšířit.
 
@@ -24,7 +24,7 @@ Pokud by v budoucnu přibyla další validační pravidla, zůstávají soustře
 
 ### Časové intervaly
 
-Rezervace beru jako časový interval, ve kterém je místo obsazené. Pokud jedna rezervace končí například v 11:00 a druhá v 11:00 začíná, nepovažuji je za překrývající se – v modelovém případě první auto v 11:00 odjíždí a místo je okamžitě dostupné pro další.
+Rezervace beru jako časový interval, ve kterém je místo obsazené. Pokud jedna rezervace končí například v 11:00 a druhá v 11:00 začíná, nepovažuji je za překrývající se, v modelovém případě první auto v 11:00 odjíždí a místo je okamžitě dostupné pro další.
 
 Pro prototyp je toto chování dostačující. V reálném provozu bych zvážil přidání krátkého časového rozestupu mezi rezervacemi, protože nelze předpokládat, že každé auto odjede přesně v plánovaný čas.
 
