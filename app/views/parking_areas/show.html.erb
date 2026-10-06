@@ -21,11 +21,6 @@
     </div>
 
     <div class="parking-area-summary-actions">
-      <div class="parking-capacity-card">
-        <span>Capacity</span>
-        <strong><%= @parking_area.capacity %> <small>spaces</small></strong>
-      </div>
-
       <%= link_to "New reservation",
               new_reservation_path(parking_area_id: @parking_area.id),
               class: "parking-areas-new-link" %>
