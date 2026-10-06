@@ -4,7 +4,11 @@ class Reservation < ApplicationRecord
   validates :name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :end_date, comparison: { greater_than: :start_date }
+  validates :end_date,
+          comparison: {
+            greater_than: :start_date,
+            message: "must be after start date"
+          }
 
   validate :capacity_check
 

@@ -1,0 +1,42 @@
+<main class="parking-area-show-page reservation-show-page">
+  <header class="parking-area-show-header">
+    <%= link_to reservations_path, class: "parking-back-link" do %>
+      <span aria-hidden="true">&larr;</span>
+      <span>All reservations</span>
+    <% end %>
+
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+      <span class="parking-brand-mark" aria-hidden="true">P</span>
+      <span>Parking</span>
+    </a>
+  </header>
+
+  <section class="parking-area-form-card reservation-detail-card" aria-labelledby="reservation-title">
+    <div class="parking-area-form-heading">
+      <p class="parking-areas-eyebrow">Reservation details</p>
+      <h1 id="reservation-title">Rezervace č. <%= @reservation.id %></h1>
+    </div>
+
+    <dl class="reservation-details">
+      <div class="reservation-detail-row">
+        <dt>Fullname</dt>
+        <dd><%= @reservation.name %></dd>
+      </div>
+
+      <div class="reservation-detail-row">
+        <dt>From</dt>
+        <dd><%= l @reservation.start_date, format: :short %></dd>
+      </div>
+
+      <div class="reservation-detail-row">
+        <dt>To</dt>
+        <dd><%= l @reservation.end_date, format: :short %></dd>
+      </div>
+
+      <div class="reservation-detail-row">
+        <dt>Parking area</dt>
+        <dd><%= link_to @reservation.parking_area.name, @reservation.parking_area %></dd>
+      </div>
+    </dl>
+  </section>
+</main>

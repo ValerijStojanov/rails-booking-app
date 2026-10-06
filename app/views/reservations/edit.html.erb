@@ -1,0 +1,65 @@
+<%
+    parking_area_options = @parking_areas.map do |parking_area|
+    [parking_area.name, parking_area.id]
+    end
+%>
+
+<main class="reservation-new-page reservation-edit-page">
+  <header class="reservation-new-header">
+    <%= link_to @reservation, class: "parking-back-link" do %>
+      <span aria-hidden="true">&larr;</span>
+      <span>Reservation details</span>
+    <% end %>
+
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+      <span class="parking-brand-mark" aria-hidden="true">P</span>
+      <span>Parking</span>
+    </a>
+  </header>
+
+  <section class="parking-area-form-card" aria-labelledby="edit-reservation-title">
+    <div class="parking-area-form-heading">
+      <p class="parking-areas-eyebrow">Reservation</p>
+      <h1 id="edit-reservation-title">Edit reservation</h1>
+      <p>Update the reservation details or assigned parking area.</p>
+    </div>
+
+    <% if @reservation.errors.any? %>
+      <div class="form-validation-errors" role="alert">
+        <ul>
+          <% @reservation.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_with model: @reservation, class: "parking-area-form reservation-form" do |form| %>
+      <div class="parking-form-field">
+        <%= form.label :name, "Fullname" %>
+        <%= form.text_field :name, :required => true %>
+      </div>
+
+      <div class="reservation-time-fields">
+        <div class="parking-form-field">
+          <%= form.label :start_date, "Start date and time" %>
+          <%= form.datetime_local_field :start_date, :required => true %>
+        </div>
+
+        <div class="parking-form-field">
+          <%= form.label :end_date, "End date and time" %>
+          <%= form.datetime_local_field :end_date, :required => true %>
+        </div>
+      </div>
+
+      <div class="parking-form-field">
+        <%= form.label :parking_area_id, "Parking area" %>
+        <%= form.select :parking_area_id,
+                parking_area_options,
+                { include_blank: "Choose a parking area" } %>
+      </div>
+
+      <%= form.submit "Update reservation", class: "parking-form-submit" %>
+    <% end %>
+  </section>
+</main>

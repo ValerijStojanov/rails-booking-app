@@ -1,0 +1,46 @@
+<main class="parking-areas-page parking-areas-index-page">
+  <header class="parking-areas-header">
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+      <span class="parking-brand-mark" aria-hidden="true">P</span>
+      <span>Parking</span>
+    </a>
+
+    <%= link_to "New parking area", new_parking_area_path, class: "parking-areas-new-link" %>
+
+    <%= link_to "New reservation", new_reservation_path, class: "parking-areas-new-link" %>
+  </header>
+
+  <div class="parking-areas-browser">
+    <section class="parking-map-placeholder" aria-label="Map placeholder">
+      <div class="parking-map-pin" aria-hidden="true"></div>
+      <div class="parking-map-label">
+        <strong>Map preview</strong>
+        <span>Replace this placeholder with a map later</span>
+      </div>
+    </section>
+
+    <section class="parking-areas-section" aria-labelledby="parking-areas-title">
+      <div class="parking-areas-heading">
+        <div>
+          <p class="parking-areas-eyebrow">Choose a location</p>
+          <h1 id="parking-areas-title">Parking areas</h1>
+        </div>
+      </div>
+
+      <ul class="parking-areas-list">
+        <% @parking_areas.each do |parking_area| %>
+          <li class="parking-area-card">
+            <%= link_to parking_area, class: "parking-area-link" do %>
+              <span class="parking-area-icon" aria-hidden="true">P</span>
+              <span class="parking-area-details">
+                <strong><%= parking_area.name %></strong>
+                <span>Capacity: <%= parking_area.capacity %></span>
+              </span>
+              <span class="parking-area-arrow" aria-hidden="true">&rarr;</span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  </div>
+</main>

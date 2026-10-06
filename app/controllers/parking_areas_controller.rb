@@ -6,6 +6,7 @@ class ParkingAreasController < ApplicationController
   end
 
   def show
+    @reservations = @parking_area.reservations.order(:start_date)
   end
 
   def new

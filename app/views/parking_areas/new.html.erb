@@ -1,0 +1,45 @@
+<main class="parking-area-new-page">
+  <header class="parking-area-new-header">
+    <%= link_to parking_areas_path, class: "parking-back-link" do %>
+      <span aria-hidden="true">&larr;</span>
+      <span>Parking areas</span>
+    <% end %>
+
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+      <span class="parking-brand-mark" aria-hidden="true">P</span>
+      <span>Parking</span>
+    </a>
+  </header>
+
+  <section class="parking-area-form-card" aria-labelledby="new-parking-area-title">
+    <div class="parking-area-form-heading">
+      <p class="parking-areas-eyebrow">Parking area</p>
+      <h1 id="new-parking-area-title">Create a new parking area</h1>
+      <p>Add the name and total capacity for this parking area.</p>
+    </div>
+
+    <% if @parking_area.errors.any? %>
+      <div class="form-validation-errors" role="alert">
+        <ul>
+          <% @parking_area.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_with model: @parking_area, class: "parking-area-form" do |form| %>
+      <div class="parking-form-field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div class="parking-form-field">
+        <%= form.label :capacity %>
+        <%= form.number_field :capacity %>
+      </div>
+
+      <%= form.submit class: "parking-form-submit" %>
+    <% end %>
+  </section>
+</main>
