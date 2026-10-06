@@ -1,0 +1,86 @@
+<main class="parking-area-show-page">
+  <header class="parking-area-show-header">
+    <%= link_to parking_areas_path, class: "parking-back-link" do %>
+      <span aria-hidden="true">&larr;</span>
+      <span>Parking areas</span>
+    <% end %>
+
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+      <span class="parking-brand-mark" aria-hidden="true">P</span>
+      <span>Parking</span>
+    </a>
+  </header>
+
+  <section class="parking-area-summary" aria-labelledby="parking-area-name">
+    <div class="parking-area-summary-copy">
+      <p class="parking-areas-eyebrow">Parking area</p>
+      <h1 id="parking-area-name"><%= @parking_area.name %></h1>
+      <p class="parking-capacity-explanation">
+        Up to <strong><%= @parking_area.capacity %></strong> reservations can overlap at the same time.
+      </p>
+    </div>
+
+    <div class="parking-area-summary-actions">
+      <div class="parking-capacity-card">
+        <span>Capacity</span>
+        <strong><%= @parking_area.capacity %> <small>spaces</small></strong>
+      </div>
+
+      <%= link_to "New reservation",
+              new_reservation_path(parking_area_id: @parking_area.id),
+              class: "parking-areas-new-link" %>
+    </div>
+  </section>
+
+  <section class="parking-schedule" aria-labelledby="schedule-title">
+    <div class="parking-schedule-heading">
+      <p class="parking-areas-eyebrow">Chronological overview</p>
+      <h2 id="schedule-title">Schedule</h2>
+    </div>
+
+    <% if @reservations.any? %>
+      <div class="parking-schedule-groups">
+        <% @reservations.group_by { |reservation| reservation.start_date.to_date }.each do |date, reservations| %>
+          <section class="parking-schedule-day" aria-labelledby="schedule-date-<%= date.iso8601 %>">
+            <h3 id="schedule-date-<%= date.iso8601 %>"><%= l date, format: :long %></h3>
+
+            <ul class="parking-schedule-list">
+              <% reservations.each do |reservation| %>
+                <li>
+                  <%= link_to reservation, class: "parking-schedule-row" do %>
+                    <span class="parking-schedule-when">
+                      <% if reservation.start_date.to_date == reservation.end_date.to_date %>
+                        <strong>
+                          <%= l reservation.start_date, format: "%H:%M" %>
+                          <span aria-hidden="true">&rarr;</span>
+                          <%= l reservation.end_date, format: "%H:%M" %>
+                        </strong>
+                      <% else %>
+                        <strong>
+                          <%= l reservation.start_date, format: "%H:%M" %>
+                          <span aria-hidden="true">&rarr;</span>
+                        </strong>
+                        <small>Ends <%= l reservation.end_date, format: :short %></small>
+                      <% end %>
+                    </span>
+
+                    <span class="parking-schedule-name"><%= reservation.name %></span>
+                    <span class="parking-area-arrow" aria-hidden="true">&rarr;</span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </section>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="parking-schedule-empty">
+        <h3>No reservations scheduled</h3>
+        <p>This parking area does not have any reservations yet.</p>
+        <%= link_to "New reservation",
+                new_reservation_path(parking_area_id: @parking_area.id),
+                class: "parking-areas-new-link" %>
+      </div>
+    <% end %>
+  </section>
+</main>

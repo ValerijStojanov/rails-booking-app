@@ -10,6 +10,8 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @parking_areas = ParkingArea.all
+    @reservation.parking_area_id = params[:parking_area_id]
   end
 
   def create
@@ -18,17 +20,20 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to @reservation, notice: "Reservation was successfully created."
     else
+      @parking_areas = ParkingArea.all
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    @parking_areas = ParkingArea.all
   end
 
   def update
     if @reservation.update(reservation_params)
       redirect_to @reservation, notice: "Reservation was successfully updated."
     else
+      @parking_areas = ParkingArea.all
       render :edit, status: :unprocessable_entity
     end
   end

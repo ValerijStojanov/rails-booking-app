@@ -1,0 +1,34 @@
+<main class="parking-areas-page reservations-page">
+  <header class="parking-areas-header">
+    <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="Parking home">
+      <span class="parking-brand-mark" aria-hidden="true">P</span>
+      <span>Parking</span>
+    </a>
+
+    <%= link_to "New reservation", new_reservation_path, class: "parking-areas-new-link" %>
+  </header>
+
+  <section class="parking-areas-section" aria-labelledby="reservations-title">
+    <div class="parking-areas-heading">
+      <div>
+        <p class="parking-areas-eyebrow">Reservation overview</p>
+        <h1 id="reservations-title">All reservations</h1>
+      </div>
+    </div>
+
+    <ol class="parking-areas-list">
+      <% @reservations.each do |reservation| %>
+        <li class="parking-area-card">
+          <%= link_to reservation, class: "parking-area-link" do %>
+            <span class="parking-area-icon" aria-hidden="true">R</span>
+            <span class="parking-area-details">
+              <strong><%= reservation.name %></strong>
+              <span>Starts <%= l reservation.start_date, format: :short %></span>
+            </span>
+            <span class="parking-area-arrow" aria-hidden="true">&rarr;</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  </section>
+</main>
