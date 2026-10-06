@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :reservations, only: [ :index, :show, :new, :create, :edit, :update ]
   # Defines the root path route ("/")
   # root "posts#index"
+
+  root "parking_areas#index"
 end
