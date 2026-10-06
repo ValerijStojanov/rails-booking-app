@@ -43,6 +43,19 @@ body:has(.parking-areas-index-page) {
   justify-content: center;
 }
 
+.reservations-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+
+.reservations-header .parking-brand {
+  justify-self: center;
+}
+
+.reservations-header .parking-areas-new-link {
+  justify-self: end;
+}
+
 .parking-areas-browser {
   display: grid;
   width: 100%;
@@ -940,6 +953,18 @@ body:has(.parking-areas-index-page) {
 
   .parking-areas-list {
     grid-template-columns: 1fr;
+  }
+
+  .reservations-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .reservations-header .parking-breadcrumbs {
+    grid-column: 1 / -1;
+  }
+
+  .reservations-header .parking-brand {
+    justify-self: start;
   }
 
   .parking-area-summary {

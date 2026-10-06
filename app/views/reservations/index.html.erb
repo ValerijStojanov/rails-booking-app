@@ -1,5 +1,12 @@
 <main class="parking-areas-page reservations-page">
-  <header class="parking-areas-header">
+  <header class="parking-areas-header reservations-header">
+    <nav class="parking-breadcrumbs" aria-label="<%= t("application.breadcrumb_label") %>">
+      <ol>
+        <li><%= link_to t("navigation.parking_areas"), parking_areas_path %></li>
+        <li aria-current="page"><%= t("navigation.all_reservations") %></li>
+      </ol>
+    </nav>
+
     <a class="parking-brand" href="<%= parking_areas_path %>" aria-label="<%= t("application.home_label") %>">
       <span class="parking-brand-mark" aria-hidden="true">P</span>
       <span><%= t("application.name") %></span>
